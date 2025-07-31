@@ -15,7 +15,7 @@ function App() {
       id: 2,
       title: "Estudar React",
       description: "Revisar hooks e componentes funcionais",
-      isCompleted: true,
+      isCompleted: false,
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ function App() {
       id: 4,
       title: "Fazer caminhada",
       description: "30 minutos de caminhada no fim da tarde",
-      isCompleted: true,
+      isCompleted: false,
     },
   ]);
 
@@ -35,9 +35,16 @@ function App() {
     const newTask = tasks.map((task) => {
       if (task.id === taskId)
         return { ...task, isCompleted: !task.isCompleted };
+      return task;
     });
 
-    return task;
+    setTasks(newTask);
+  }
+
+  function onDeleteTaskClick(taskId) {
+    const newTask = tasks.filter((task) => task.id !== taskId);
+
+    setTasks(newTask);
   }
 
   return (
@@ -47,7 +54,11 @@ function App() {
           Gerenciar tarefas
         </h1>
         <AddTask />
-        <Tasks tasks={tasks} onTaskClick={onTaskClick} />
+        <Tasks
+          tasks={tasks}
+          onTaskClick={onTaskClick}
+          onDeleteTaskClick={onDeleteTaskClick}
+        />
       </div>
     </div>
   );
