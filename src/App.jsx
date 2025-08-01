@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { AddTask } from "./components/AddTask";
+import { Tasks } from "./components/Tasks";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      title: "Comprar mantimentos",
+      description: "Leite, pão, ovos e café",
+      isCompleted: false,
+    },
+    {
+      id: 2,
+      title: "Estudar React",
+      description: "Revisar hooks e componentes funcionais",
+      isCompleted: true,
+    },
+    {
+      id: 3,
+      title: "Enviar relatório",
+      description: "Relatório mensal de desempenho para o chefe",
+      isCompleted: false,
+    },
+    {
+      id: 4,
+      title: "Fazer caminhada",
+      description: "30 minutos de caminhada no fim da tarde",
+      isCompleted: true,
+    },
+  ]);
+
+  function onTaskClick(taskId) {
+    const newTask = tasks.map((task) => {
+      if (task.id === taskId)
+        return { ...task, isCompleted: !task.isCompleted };
+    });
+
+    return task;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
+      <div className="w-[500px]">
+        <h1 className="text-3xl text-slate-100 font-bold text-center">
+          Gerenciar tarefas
+        </h1>
+        <AddTask />
+        <Tasks tasks={tasks} onTaskClick={onTaskClick} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
