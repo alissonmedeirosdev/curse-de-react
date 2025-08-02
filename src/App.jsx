@@ -29,6 +29,18 @@ function App() {
       description: "30 minutos de caminhada no fim da tarde",
       isCompleted: false,
     },
+    {
+      id: 5,
+      title: "Fazer caminhada",
+      description: "30 minutos de caminhada no fim da tarde",
+      isCompleted: false,
+    },
+    {
+      id: 6,
+      title: "Fazer caminhada",
+      description: "30 minutos de caminhada no fim da tarde",
+      isCompleted: false,
+    },
   ]);
 
   function onTaskClick(taskId) {
