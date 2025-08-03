@@ -21,19 +21,19 @@ export function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
               onClick={() => onTaskClick(task.id)}
               className={`${
                 task.isCompleted && "line-through"
-              } bg-slate-400 w-full text-white p-2 rounded-md text-left`}
+              } bg-slate-400 w-full text-white p-2 rounded-md text-left cursor-pointer`}
             >
               {task.title}
             </button>
             <button
               onClick={() => onSeedDetailsClick(task)}
-              className="bg-slate-400 p-2 rounded-md text-white"
+              className="bg-slate-400 p-2 rounded-md text-white cursor-pointer"
             >
               <ChevronRightIcon />
             </button>
             <button
               onClick={() => onDeleteTaskClick(task.id)}
-              className="bg-slate-400 p-2 rounded-md text-white"
+              className="bg-slate-400 p-2 rounded-md text-white cursor-pointer"
             >
               <TrashIcon />
             </button>
